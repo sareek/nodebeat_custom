@@ -1,0 +1,22 @@
+{
+  "name": "nodebeat_custom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sareek/nodebeat_custom.git"
+  },
+  "author": "Lekhraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sareek/nodebeat_custom/issues"
+  },
+  "homepage": "https://github.com/sareek/nodebeat_custom#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
