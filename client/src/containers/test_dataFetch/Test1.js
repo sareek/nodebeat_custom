@@ -18,7 +18,7 @@ class Test1 extends Component {
                        author:"Sarik"
                    }
                });
-               this.setState({posts: updatedPosts});
+               this.setState({posts: updatedPosts });
                 console.log(response.data.slice(0, 4));
            } );
     }
