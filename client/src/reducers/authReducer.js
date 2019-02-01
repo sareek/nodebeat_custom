@@ -10,10 +10,15 @@ export default function(state = initialState, action) {
     switch(action.type) {
         
         case TEST_DISPATCH:
+        console.log('iiidajkkds',action.payload);
            return {
+               
                ...state,
                user:action.payload
+               
            }
+           
+           
 
         default:
           return {
@@ -22,4 +27,5 @@ export default function(state = initialState, action) {
                }
 
     }
+    
 }
