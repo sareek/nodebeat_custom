@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import classnames from 'classnames'
 import { connect } from 'react-redux'
@@ -67,10 +68,15 @@ onChange(e) {
 }
 
 render() {
+
+  const { errors }= this.state;
+  const { user } = this.props.auth;
+
 return (   
  
 <div className="Person">
-  
+
+  {/* {user? user.name :null} */}
 
   <Form>
   <Form.Field>  
@@ -102,7 +108,7 @@ return (
       placeholder='ssdfasfsere1'
       name="password" 
      // value={this.state.password}
-     // onChange={this.onChange}
+      onChange={this.onChange}
       />
     </Form.Field>
     <Form.Field>
@@ -111,7 +117,7 @@ return (
       type="password"
       name="password2"
      // value={this.state.password2}
-      //onChange={this.onChange}
+      onChange={this.onChange}
       />
     </Form.Field>
     <Form.Field>
@@ -126,7 +132,14 @@ return (
 }
 }
 
-const MapStateToProps=(sta)=>{
+RegisterForm.propTypes={
+  registerUser:PropTypes.func.isRequired,
+  auth:PropTypes.object.isRequired
+};
 
-}
-export default connect(null, { registerUser })(RegisterForm)
+//access auth property with this.props.auth
+const MapStateToProps=(state)=>({
+  auth:state.auth
+  
+});
+export default connect(MapStateToProps, { registerUser })(RegisterForm)
