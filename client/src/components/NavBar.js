@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
 
 import { Button,Icon,Input } from 'semantic-ui-react';
 import { Menu } from 'semantic-ui-react'
@@ -46,10 +47,18 @@ class NavBar extends Component {
       
       <div className="App">
       <Menu secondary>
-        <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+        <Menu.Item 
+        as= { Link }
+        to='/'
+        name='Register'
+        active={activeItem === 'Register'} 
+        onClick={this.handleItemClick} />
+        
         <Menu.Item
-          name='messages'
-          active={activeItem === 'messages'}
+          as={ Link }
+          to='login'
+          name='Login'
+          active={activeItem === 'Login'}
           onClick={this.handleItemClick}
         />
         <Menu.Item

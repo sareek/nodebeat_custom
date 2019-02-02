@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import axios from 'axios';
+// import axios from 'axios';
 import classnames from 'classnames'
 import { connect } from 'react-redux'
 import { registerUser } from '../../actions/authActions'
@@ -56,9 +56,16 @@ handleSubmit(e) {
     };
 
     this.props.registerUser(newUser);
+
+   
   
 }
 
+componentWillReceiveProps(nextProps) {
+  if(nextProps.errors) {
+    this.setState({errors:nextProps.errors})
+  }
+}
 
 onChange(e) {
   console.log('dd',[e.target.name]);
@@ -78,8 +85,10 @@ return (
 
   {/* {user? user.name :null} */}
 
+
   <Form>
-  <Form.Field>  
+  <Form.Field> 
+    <p>Register Form</p> 
         </Form.Field>
     <Form.Field>
       <label>Name</label>
@@ -134,12 +143,14 @@ return (
 
 RegisterForm.propTypes={
   registerUser:PropTypes.func.isRequired,
-  auth:PropTypes.object.isRequired
+  auth:PropTypes.object.isRequired,
+  errors:PropTypes.object.isRequired
 };
 
 //access auth property with this.props.auth
 const MapStateToProps=(state)=>({
-  auth:state.auth
+  auth:state.auth,
+  errors:state.errors
   
 });
 export default connect(MapStateToProps, { registerUser })(RegisterForm)

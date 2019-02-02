@@ -3,7 +3,7 @@ import React from 'react'
 const dummyComp = () => {
     return (
         <div>
-             <p>Inside dummy component</p>
+             <p>dummy</p>
         </div>
     )
 }
