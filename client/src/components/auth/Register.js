@@ -132,7 +132,7 @@ return (
     <Form.Field>
       <Checkbox label='I agree to the Terms and Conditions' />
     </Form.Field >
-    <Button type='submit' onClick={ this.handleSubmit }>Submit</Button>
+    <Button primary type='submit' onClick={ this.handleSubmit }>Submit</Button>
   </Form>
   </div>  
 
