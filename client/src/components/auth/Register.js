@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 // import axios from 'axios';
 import classnames from 'classnames'
 import { connect } from 'react-redux'
@@ -22,6 +23,7 @@ constructor() {
     };
      this.onChange = this.onChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this); 
+     this.handleSubmitTest = this.handleSubmitTest.bind(this); 
 }    
 
 
@@ -55,10 +57,15 @@ handleSubmit(e) {
       password2: this.state.password2
     };
 
-    this.props.registerUser(newUser);
+    this.props.registerUser(newUser, this.props.history);
 
    
   
+}
+
+
+handleSubmitTest(e) {
+  console.log('handleSubmitTest called');
 }
 
 componentWillReceiveProps(nextProps) {
@@ -86,7 +93,7 @@ return (
   {/* {user? user.name :null} */}
 
 
-  <Form>
+  <Form onSubmit={this.handleSubmitTest}>
   <Form.Field> 
     <p>Register Form</p> 
         </Form.Field>
@@ -141,6 +148,7 @@ return (
 }
 }
 
+//little bit confused here
 RegisterForm.propTypes={
   registerUser:PropTypes.func.isRequired,
   auth:PropTypes.object.isRequired,
@@ -148,9 +156,10 @@ RegisterForm.propTypes={
 };
 
 //access auth property with this.props.auth
+//this.props.errors
 const MapStateToProps=(state)=>({
   auth:state.auth,
   errors:state.errors
   
 });
-export default connect(MapStateToProps, { registerUser })(RegisterForm)
+export default connect(MapStateToProps, { registerUser })(withRouter(RegisterForm));
