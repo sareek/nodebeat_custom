@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions/authActions';
 
 import { Button,Icon,Input } from 'semantic-ui-react';
 import { Menu } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
+
+
+
+
+
 
 
 
@@ -26,6 +35,13 @@ class NavBar extends Component {
         )}
 
 
+        onLogoutClick(e) {
+          e.preventDefault();
+          this.props.logoutUser();  
+          
+        }
+
+
      
 
   // handleItemClick = () => {
@@ -37,6 +53,38 @@ class NavBar extends Component {
   // }
   
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
+      <ul>
+        <li>
+          <a
+            href=""
+            onClick={this.onLogoutClick.bind(this)}
+          
+          >
+            Logout
+          </a>
+        </li>
+      </ul>
+    );
+
+    const guestLinks = (
+      <ul>
+         <li>
+          <Link to="/register">
+            Sign Up
+          </Link>
+        </li>
+
+        <li>
+          <Link to="/login">
+            Loginnnnn
+          </Link>
+        </li>
+      </ul>
+    );
+
     const {activeItem} = this.state;
 
     if (this.state.activeItem==='messages'){
@@ -47,6 +95,9 @@ class NavBar extends Component {
       
       <div className="App">
       <Menu secondary>
+
+      {isAuthenticated ? authLinks : guestLinks} 
+
         <Menu.Item 
         as= { Link }
         to='/'
@@ -84,4 +135,13 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+NavBar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logoutUser })(NavBar);
