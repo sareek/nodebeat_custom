@@ -29,7 +29,7 @@ describe('user module test', () => {
 
 
 
-        it('should call userdata collector fake function', (done) => {
+        it('should call userdata collector fake function', async(done) => {
 
             let userData = {
                 firstName: "lekh raj",
@@ -57,7 +57,7 @@ describe('user module test', () => {
                 return userData;
             });
 
-            let emailExitsStub = sinon.stub(addUserMethod, "checkEmailExists").withArgs(userData).usingPromise(bluebird.Promise).resolves(userData);
+            let emailExitsStub =await sinon.stub(addUserMethod, "checkEmailExists").withArgs(userData).resolves(userData);
             // dataStubbed.restore();
             console.log('fake email data', emailExitsStub)
             // sinon.spy(addUserMethod,"checkEmailExists");
@@ -71,7 +71,7 @@ describe('user module test', () => {
             expect(dataStubbed.calledOnce).to.be.true;
            // sinon.assert.calledWith(emailExitsStub,'userdata');
 
-            // return expect(emailExitsStub.calledOnce).to.eventually.be.true;
+           await expect(emailExitsStub.calledOnce).to.be.true;
 
             done();
         });

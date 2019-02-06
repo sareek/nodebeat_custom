@@ -7,3 +7,5 @@
 [2019-02-05T09:45:24+05:45] "GET /babel/traverse/lib/context.js" 404 168 - 0.416 ms
 [2019-02-05T09:45:24+05:45] "GET /babel/traverse/lib/index.js" 404 166 - 1.105 ms
 [2019-02-05T09:45:24+05:45] "GET /babel/traverse/lib/path/index.js" 404 171 - 1.135 ms
+[2019-02-05T14:28:00+05:45] "GET /babel/parser/lib/index.js" 404 164 - 17.651 ms
+[2019-02-05T16:35:20+05:45] "PUT /api/user" 404 147 - 4.348 ms
